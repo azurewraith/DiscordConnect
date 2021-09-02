@@ -1,6 +1,6 @@
 {
-  "name": "DiscordConnectDCC",
-  "title": "DiscordConnectDCC",
+  "name": "DiscordConnect",
+  "title": "DiscordConnect",
   "description": "Send Foundry chat to Discord!",
   "author": "Caoranach/Azurewraith",
   "version": "1.0.6-rc1",
