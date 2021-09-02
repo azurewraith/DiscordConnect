@@ -82,6 +82,9 @@ Hooks.on('createChatMessage', (msg, options, userId) => {
 		desc = desc + 'Rolled ' + msg.roll.formula + ', and got a ' + msg.roll.result + ' = ' + msg.roll.total;
 		hookEmbed = [{title: title, description: desc}];
 	}
+	else if(msg.data.content.includes("</a>")){
+		constructedMessage = msg.data.content.replace(/<\/?[^>]+(>|$)/g, "");
+	}
 	else if(!msg.data.content.includes("</div>")){
 		if(game.settings.get("DiscordConnect", "addChatQuotes")){
 			constructedMessage = '\"' + msg.data.content + '\"';
@@ -89,9 +92,6 @@ Hooks.on('createChatMessage', (msg, options, userId) => {
 		else {
 			constructedMessage = msg.data.content;
 		}
-	}
-	else if(msg.data.content.includes("</a>")){
-		constructedMessage = msg.data.content.replace(/<\/?[^>]+(>|$)/g, "");
 	}
 	else {
 		var ids = msg.data.content.search("midi-qol-target-name");
