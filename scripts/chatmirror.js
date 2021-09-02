@@ -90,6 +90,9 @@ Hooks.on('createChatMessage', (msg, options, userId) => {
 			constructedMessage = msg.data.content;
 		}
 	}
+	else if(msg.data.content.includes("</a>")){
+		constructedMessage = msg.data.content.replace(/<\/?[^>]+(>|$)/g, "");
+	}
 	else {
 		var ids = msg.data.content.search("midi-qol-target-name");
 		if(ids != -1){
@@ -181,12 +184,12 @@ function createDialog(title, content){
 	  one: {
 	   icon: '<i class="fas fa-check"></i>',
 	   label: "Option One",
-	   callback: () => console.log("Chose One")
+	   callback: () => console.log("Choose One")
 	  },
 	  two: {
 	   icon: '<i class="fas fa-times"></i>',
 	   label: "Option Two",
-	   callback: () => console.log("Chose Two")
+	   callback: () => console.log("Choose Two")
 	  }
 	 },
 	 default: "two",
